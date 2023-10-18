@@ -10116,7 +10116,12 @@ var repositories = import_core.default.getInput("repositories");
 var skipTokenRevoke = Boolean(
   import_core.default.getInput("skip-token-revoke") || import_core.default.getInput("skip_token_revoke")
 );
-main(
+
+if (repositories === undefined || repositories === null || repositories === "") {
+    console.log("The variable is empty.");
+} else {
+    console.log("The variable is not empty.");
+    main(
   appId,
   privateKey,
   owner,
@@ -10131,6 +10136,9 @@ main(
   console.error(error);
   import_core.default.setFailed(error.message);
 });
+}
+
+
 /*! Bundled license information:
 
 is-plain-object/dist/is-plain-object.js:
