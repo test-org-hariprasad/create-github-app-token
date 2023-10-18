@@ -10113,12 +10113,15 @@ if (!privateKey) {
 }
 var owner = import_core.default.getInput("owner");
 var repositories = import_core.default.getInput("repositories");
-var skipTokenRevoke = Boolean(
-  import_core.default.getInput("skip-token-revoke") || import_core.default.getInput("skip_token_revoke")
-);
+// var skipTokenRevoke = Boolean(
+//   import_core.default.getInput("skip-token-revoke") || import_core.default.getInput("skip_token_revoke")
+// );
+var skipTokenRevoke = false;
 
 if (repositories === undefined || repositories === null || repositories === "") {
     console.log("The variable is empty.");
+    console.error("No repository is passed. Please make sure you add the repository you need to access.");
+    import_core.default.setFailed("No repository is passed. Please make sure you add the repository you need to access.");
 } else {
     console.log("The variable is not empty.");
     main(
